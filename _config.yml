@@ -3,7 +3,7 @@ title: Y.C. Tseng's Site # your site title
 author: YCTs # You :P
 description: > # Meta description of Homepage
   定期整理一些論文筆記以及學習心得
-baseurl: "/mysite" # the subpath of your site, e.g. /blog
+baseurl: "/weeklypapers" # the subpath of your site, e.g. /blog
 url: "https://ycts.github.io/" # the base hostname & protocol for your site, e.g. http://example.com
 
 # SEO PLUGIN
