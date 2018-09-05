@@ -87,7 +87,7 @@ $$h_i^l = \upsilon(W^l[h_{i-k/2}^{l-1},....,h_{i+k/2}^{l-1}]+b_w^l)+h_i^{l-1}$$
 
 $$p(y_{i+1}|y_1,...,y_i, \textbf x) = softmax(W_o h_i^L + b_o) \in \mathbb R^T$$
 
-其中假設最上層(第 $$L$$ 層)block的ouput為 $$h_i^L$$。
+其中假設最上層(第 $$L$$ 層)block的ouput為 $$h_i^L$$。輸出會是一個維度 $$T$$ 的vector，代表一個對於候選字的機率分佈。
 
 ### Multi-step Attention
 
