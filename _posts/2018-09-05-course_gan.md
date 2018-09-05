@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 課程筆記 GAN
-featured-img:
+featured-img: emile-perron-190221
 mathjax: true
 categories: [GAN]
 ---
