@@ -135,6 +135,33 @@ $JSD(P||Q)$ :
 
 $$JSD(P||Q) = \frac 1 2 D(P||M) + \frac 1 2 D(Q||M), \quad M = \frac 1 2 (P+Q)$$
 
+### Discriminator + Generator
+前面提到，在Generator要解的目標函數式
+
+$$G^* = \operatorname*{arg\,min}_G Div(P_G, P_{data})$$
+
+因為也提到，在Discriminator的目標函數：
+
+$$D^* = \operatorname*{arg\,max}_D V(D, G)$$
+
+且已推導出：
+
+$$\operatorname*{max}_D V(D, G) = V(D^*,G)$$
+
+$$ = -2log2 + 2JSD(P_{data}||P_G)$$
+
+則可把 $Div(P_G, P_{data}) 代換成：
+
+$$\operatorname*{max}_D V(D, G)$$
+
+得到：
+
+$$G^* = \operatorname*{arg\,min}_G \operatorname*{max}_D V(D, G)$$
+
+![Imgur](https://i.imgur.com/T22hgwk.png)
+
+### Algorithm
+
 
 
 
