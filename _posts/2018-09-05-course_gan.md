@@ -84,6 +84,65 @@ Training:
 
 $$D^* = \operatorname*{arg\,max}_D V(D, G)$$
 
+$$V = E_{x\sim P_{data}} [logD(x)] + E_{x\sim P_G} [log(1 -D(x))]$$
+
+$$ = \int\limits_x P_{data}(x)logD(x) \mathrm d x + \int\limits_x P_G (x)log(1- D(x)) \mathrm d x$$
+
+$$ = \int\limits_x [ P_{data}(x)logD(x) + P_G (x)log(1- D(x))] \mathrm d x$$
+
+以下討論：
+
+$$\operatorname*{max}_D V(D, G) = V(D^*,G)$$
+
+$$V = E_{x\sim P_{data}} [logD(x)] + E_{x\sim P_G} [log(1 -D(x))]$$
+
+$$ = \int\limits_x P_{data}(x)logD(x) \mathrm d x + \int\limits_x P_G (x)log(1- D(x)) \mathrm d x$$
+
+$$ = \int\limits_x [ P_{data}(x)logD(x) + P_G (x)log(1- D(x))] \mathrm d x$$
+
+找一個 $ D^* $ 可以使得上述 $V$ 最大。其中假設 $D(x)$ 可為任意function。故可視為：給定一 $x$ ，找一個 $D^*$ 使得:
+
+$$P_{data}(x)logD(x) + P_G (x)log(1- D(x))$$
+
+有最大值。求最大值，故令 $f(D) = alog(D) + blog(1-D)$
+
+$$\frac {\mathrm d f(D)} {\mathrm d D} = a \times \frac 1 D + b \times \frac 1 {1-D} \times (-1) = 0$$
+
+$$\implies a \times \frac 1 {D^*} = b \times \frac 1 {1-D^*}$$
+
+$$\implies D^* = \frac a {a+b}$$
+
+$$\implies D^*(x) = \frac {P_{data}(x)} {P_{data}(x) + P_G(x)}$$
+
+接著，將 $ D^* (x) = \frac {P_{data}(x)} {P_{data}(x) + P_G(x)}$ 帶入 $V(D^*, G) $ :
+
+$$V(D^*, G)$$
+
+$$ = E_{x\sim P_{data}} [log \frac {P_{data}(x)} {P_{data}(x) + P_G(x)}] + E_{x\sim P_G} [log\frac {P_G (x)} {P_{data}(x) + P_G(x)}]$$
+
+$$ =  \int\limits_x \bigg[ P_{data}(x)log \frac {P_{data}(x)} {P_{data}(x) + P_G(x)} + P_G (x)log\frac {P_G (x)} {P_{data}(x) + P_G(x)}\bigg] \mathrm d x$$
+
+$$ =  \int\limits_x \bigg[ P_{data}(x)log \frac {\frac 1 2 P_{data}(x)} {\frac 1 2 [P_{data}(x) + P_G(x) ]} + P_G (x)log\frac {\frac 1 2 P_G (x)} {\frac 1 2 [P_{data}(x) + P_G(x)]}\bigg] \mathrm d x$$
+
+$$ = -2log2 +  \int\limits_x \bigg[ P_{data}(x)log \frac {P_{data}(x)} {\frac 1 2 [P_{data}(x) + P_G(x) ]} + P_G (x)log\frac {P_G (x)} {\frac 1 2 [P_{data}(x) + P_G(x)]}\bigg] \mathrm d x$$
+
+$$ = -2log2 + KL(P_{data}|| \frac {P_{data}+ P_G} 2) + KL(P_G|| \frac {P_{data}+ P_G} 2)$$
+
+$$ = -2log2 + 2JSD(P_{data}||P_G)$$
+
+Jensen-Shannon divergence
+$JSD(P||Q)$ :
+
+$$JSD(P||Q) = \frac 1 2 D(P||M) + \frac 1 2 D(Q||M), \quad M = \frac 1 2 (P+Q)$$
+
+
+
+
+
+
+
+
+
 
         
 
