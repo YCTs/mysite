@@ -217,10 +217,12 @@ Generated data { $\tilde x^1,..., \tilde x^m$ }
 
 $$\tilde V = \frac 1 m \sum_{i=1}^{m} logD(x^i) + \frac 1 m \sum_{i=1}^{m} log(1 - D(\tilde x^i))$$
 
+觀察發現 Maximize $\tilde V$ 可等價於 Minimize 二元分類的 Cross Entropy。D為一Binary Classifier，sigmoid output 0~1之間。一類為real一類為fake。
 
 
 ### Algorithm
 
+![Imgur](https://i.imgur.com/G6w9DpP.png)
 
 
 
