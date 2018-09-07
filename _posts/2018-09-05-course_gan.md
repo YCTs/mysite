@@ -8,6 +8,54 @@ categories: [GAN]
 
 在閱讀GAN相關paper之前，可能會有一些基礎的知識要先了解，這邊我整理一些[李宏毅](http://speech.ee.ntu.edu.tw/~tlkagk/index.html)老師在課堂上的內容筆記。
 
+在此之前，先整理一些數學基礎：
+
+## KL Divergence vs Cross Entropy
+
+### 1. Entropy:
+
+$$ S = - \sum_i p(x_i)log_b(x_i)$$
+
+### 2. Cross Entorpy
+
+事件集合ㄧ事件 $x_i$，相對於真實分佈 A 而言， 分佈B編碼分佈A的平均bit長度（因為分佈機率不均勻，故為期望值）。 
+
+$$H(A, B) =  - \sum_i P_A(x_i)log P_B(x_i)$$
+
+在二分問題中:
+
+$$P_A(x = 1) = a \implies P_A(x = 0) = 1 - a$$
+
+其中A為真實分佈，故a = 1。
+
+$$P_B(x = 1) = b \implies P_B(x = 0) = 1 - b$$
+
+若計算 $H(A, B)$ ：
+
+$$x_i = 1  \implies P_A(x_i)log P_B(x_i) = alogb $$
+
+$$x_i = 0  \implies P_A(x_i)log P_B(x_i) = (1 - a)log(1 - b) $$
+
+綜合上二式剛好與二分類問題的Maximun Likelihood相同 : 
+
+$$ \sum_i alogb + (1 - a) log(1-b)$$
+
+
+### 3. Divergence:
+
+計算分佈差距：
+
+$$KLDiv(A||B) = \sum_i P_A(x_i) log \bigg(\frac {P_A(x_i)} {P_B(x_i)} \bigg) $$
+
+$$ = \sum_i P_A(x_i) log \big(P_A(x_i) \big) - \sum_i P_A(x_i) log \big(P_B(x_i) \big)$$
+
+由上可觀察出若 $P_A$ = $P_B$ ，則
+$KLDiv(A||B) = 0$
+
+且 $KL Divergence = S(A) - H(A, B)$，而在訓練時 $A$ 為訓練集已給定，故可用 H(A, B)等價於分布差異而做訓練。
+
+
+
 ## Introduction of Generative Adversarial Network (GAN)
 
 #### Discriminator
@@ -131,7 +179,7 @@ $$ = -2log2 + KL(P_{data}|| \frac {P_{data}+ P_G} 2) + KL(P_G|| \frac {P_{data}+
 $$ = -2log2 + 2JSD(P_{data}||P_G)$$
 
 Jensen-Shannon divergence
-$JSD(P||Q)$ :
+$JSD$ :
 
 $$JSD(P||Q) = \frac 1 2 D(P||M) + \frac 1 2 D(Q||M), \quad M = \frac 1 2 (P+Q)$$
 
@@ -159,6 +207,17 @@ $$\operatorname*{max}_D V(D, G)$$
 $$G^* = \operatorname*{arg\,min}_G \operatorname*{max}_D V(D, G)$$
 
 ![Imgur](https://i.imgur.com/T22hgwk.png)
+
+### In Practice
+Sample  m examples { $x^1, x^2,...., x^m$} from database.
+
+Generated data { $\tilde x^1,..., \tilde x^m$ }
+
+實作上無法以積分計算期望值，故 $V = E_{x\sim P_{data}} [logD(x)] + E_{x\sim P_G} [log(1 -D(x))]$會用下式：
+
+$$\tilde V = \frac 1 m \sum_{i=1}^{m} logD(x^i) + \frac 1 m \sum_{i=1}^{m} log(1 - D(\tilde x^i))$$
+
+
 
 ### Algorithm
 
