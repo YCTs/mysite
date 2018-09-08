@@ -52,7 +52,7 @@ $$ = \sum_i P_A(x_i) log \big(P_A(x_i) \big) - \sum_i P_A(x_i) log \big(P_B(x_i)
 由上可觀察出若 $P_A$ = $P_B$ ，則
 $KLDiv(A||B) = 0$
 
-且 $KL Divergence = S(A) - H(A, B)$，而在訓練時 $A$ 為訓練集已給定，故可用 H(A, B)等價於分布差異而做訓練。
+且 $KL Divergence = S(A) ＋ H(A, B)$，而在訓練時 $A$ 為訓練集已給定，故可用 H(A, B)等價於分布差異而做訓練。
 
 
 
