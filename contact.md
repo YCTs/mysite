@@ -9,6 +9,7 @@ permalink: /contact/
 
 [email me](mailto:{{site.email}})
 
+
 {% include form.html %}
 
 {% include modal.html %}
