@@ -4,6 +4,7 @@ title: 課程筆記 GAN
 featured-img: emile-perron-190221
 mathjax: true
 categories: [GAN]
+summary: 在閱讀GAN相關論文之前，可能會需要一些基礎知識，這邊整理一些當初我上課以及搜尋資料整理的筆記。
 ---
 
 在閱讀GAN相關paper之前，可能會有一些基礎的知識要先了解，這邊我整理一些[李宏毅](http://speech.ee.ntu.edu.tw/~tlkagk/index.html)老師在課堂上的內容筆記。

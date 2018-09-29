@@ -3,7 +3,8 @@ layout: post
 title: 論文筆記 Convolutional Sequence to Sequence Learning
 featured-img: conv
 mathjax: true
-categories: [Machine Comprehension,  ICML]
+categories: [ICML, Machine Translation]
+summary: 一般來說提到Seq2seq架構，會以LSTM或是GRU等等RNN架構，並且加入Attention Mechanism加強機器語意理解能力。而這篇Facebook AI Research在ICML2017年中發表的論文，卻是用Convolution架構實現，並且也加入了適用於Convolutional Seq2seq架構的多層Attention機制，並在多個項目上達到state of the art。CNN架構在訓練時平行效率優於LSTM架構，這在處理一些更大的dataset的任務上有一定參考價值。
 ---
 
 ##   論文出處 : [Convolutional Sequence to Sequence Learning](https://arxiv.org/abs/1705.03122)
