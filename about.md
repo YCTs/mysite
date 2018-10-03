@@ -6,5 +6,6 @@ permalink: /about/
 
 ## About YCTs
 
-I'm an undergraduate student from National Taiwan University (NTU). I have severed as the Research Assistant and Machine Learning course Teaching Assistant at NTU EE since February 2018 and August 2018, respectively.
+
+
 
